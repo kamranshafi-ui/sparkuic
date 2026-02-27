@@ -82,21 +82,22 @@
   }
   .nav-logo span { color: var(--red); }
   .nav-links {
-    display: flex; gap: 2px; list-style: none;
+    display: flex; gap: 0px; list-style: none;
     align-items: center;
   }
   .nav-links a {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: rgba(255,255,255,0.75);
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 4px;
     transition: all 0.2s;
     cursor: pointer;
+    white-space: nowrap;
   }
   .nav-links a:hover, .nav-links a.active {
     color: #fff;
@@ -184,7 +185,7 @@
     position: absolute;
     font-family: 'Bebas Neue', sans-serif;
     font-size: min(45vw, 420px);
-    color: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.025);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -819,7 +820,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-inner">
-    <img src="Logo 1.png" style="height: 65px; width: auto;" /></div>
+    <div class="nav-logo" onclick="navigate('home')">SPARK <span>UIC</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a onclick="navigate('home')" data-page="home">Home</a></li>
       <li><a onclick="navigate('president')" data-page="president">President</a></li>
