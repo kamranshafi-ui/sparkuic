@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SPARK UIC — USG Election 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #002147;
+    --blue-mid: #003366;
+    --blue-light: #0a4080;
+    --red: #D50032;
+    --red-hover: #b8002b;
+    --white: #ffffff;
+    --off-white: #f4f6f9;
+    --text-dark: #0d1b2a;
+    --text-mid: #334155;
+    --text-light: #64748b;
+    --nav-h: 68px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .section-pad { padding: 80px 0; }
+  .section-pad-sm { padding: 56px 0; }
+  .tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+    color: var(--blue);
+  }
+  .section-title.white { color: #fff; }
+  .red-accent { color: var(--red); }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--blue);
+    height: var(--nav-h);
+    display: flex; align-items: center;
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .nav-inner {
+    width: 100%; max-width: 1200px;
+    margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 2px;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links {
+    display: flex; gap: 4px; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+  }
+  .nav-cta {
+    background: var(--red) !important;
+    color: #fff !important;
+    border-radius: 4px;
+    padding: 8px 16px !important;
+  }
+  .nav-cta:hover { background: var(--red-hover) !important; }
+
+  .hamburger {
+    display: none; cursor: pointer; flex-direction: column; gap: 5px;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 2px;
+    background: #fff; border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: var(--blue-mid);
+    padding: 16px 0; z-index: 999;
+    border-bottom: 2px solid var(--red);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: rgba(255,255,255,0.05); color:#fff; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 32px; border-radius: 4px;
+    cursor: pointer; border: none; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-red {
+    background: var(--red); color: #fff;
+  }
+  .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+  .btn-outline-red {
+    background: transparent; color: var(--red);
+    border: 2px solid var(--red);
+  }
+  .btn-outline-red:hover { background: var(--red); color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--blue);
+    background-image:
+      radial-gradient(ellipse at 70% 50%, rgba(213,0,50,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(0,51,102,0.8) 0%, transparent 50%),
+      linear-gradient(135deg, #001830 0%, #002147 50%, #003366 100%);
+    display: flex; align-items: center;
+    padding-top: var(--nav-h);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: 'SPARK';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: min(45vw, 420px);
+    color: rgba(255,255,255,0.025);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    letter-spacing: -10px;
+    white-space: nowrap;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+    padding: 80px 0;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--red);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 32px; height: 2px; background: var(--red);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .hero-title span { color: var(--red); }
+  .hero-sub {
+    font-size: 18px; font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7; margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-badge {
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-light), var(--blue-mid));
+    border: 4px solid rgba(213,0,50,0.4);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    box-shadow: 0 0 80px rgba(213,0,50,0.15), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .hero-badge::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .badge-text-top {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .badge-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 88px; color: #fff;
+    line-height: 1; letter-spacing: 4px;
+  }
+  .badge-main span { color: var(--red); }
+  .badge-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--red);
+    padding: 20px 0;
+  }
+  .stats-inner {
+    display: flex; justify-content: space-around;
+    align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; color: #fff; letter-spacing: 2px;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
+
+  /* ── MISSION ── */
+  .mission-section { background: var(--white); }
+  .mission-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .mission-text p {
+    font-size: 17px; line-height: 1.8;
+    color: var(--text-mid); margin-bottom: 16px;
+  }
+  .mission-callout {
+    background: var(--blue);
+    padding: 48px; border-radius: 8px;
+    position: relative; overflow: hidden;
+  }
+  .mission-callout::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 6px; height: 100%; background: var(--red);
+  }
+  .mission-callout blockquote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 28px;
+    color: #fff; line-height: 1.3;
+    font-style: normal;
+  }
+  .mission-callout blockquote span { color: var(--red); }
+  .mission-callout cite {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400; font-size: 14px;
+    color: rgba(255,255,255,0.5); font-style: normal;
+    margin-top: 16px; display: block;
+  }
+
+  /* ── MEET THE TICKET ── */
+  .ticket-section { background: var(--off-white); }
+  .ticket-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    margin-top: 48px;
+  }
+  .ticket-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+  }
+  .ticket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,33,71,0.15);
+    border-bottom-color: var(--red);
+  }
+  .ticket-card-img {
+    height: 220px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    display: flex; align-items: flex-end; justify-content: flex-start;
+    position: relative; overflow: hidden;
+    padding: 20px;
+  }
+  .ticket-card-img .placeholder-silhouette {
+    position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 140px; height: 170px;
+    background: linear-gradient(to top, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+    border-radius: 80px 80px 0 0;
+    overflow: hidden;
+  }
+  .ticket-card-img .placeholder-silhouette::before {
+    content: '';
+    position: absolute; top: 16px; left: 50%;
+    transform: translateX(-50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .ticket-pos-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
+    background: var(--red); color: #fff;
+    padding: 4px 10px; border-radius: 3px;
+    z-index: 1; position: relative;
+  }
+  .ticket-card-body { padding: 24px; }
+  .ticket-card-body h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 24px;
+    color: var(--blue); margin-bottom: 6px;
+  }
+  .ticket-card-body p {
+    font-size: 14px; color: var(--text-light);
+    line-height: 1.6; margin-bottom: 16px;
+  }
+
+  /* ── PLATFORM PREVIEW ── */
+  .platform-preview { background: var(--blue); }
+  .platform-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 48px; border-radius: 8px; overflow: hidden;
+  }
+  .platform-item {
+    background: rgba(255,255,255,0.04);
+    padding: 36px 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .platform-item:hover { background: rgba(255,255,255,0.08); }
+  .platform-icon {
+    font-size: 28px; margin-bottom: 14px; display: block;
+  }
+  .platform-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px;
+    color: #fff; margin-bottom: 10px; letter-spacing: 0.5px;
+  }
+  .platform-item p {
+    font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65;
+  }
+
+  /* ── CANDIDATE PAGE ── */
+  .candidate-hero {
+    background: var(--blue);
+    padding-top: var(--nav-h);
+    min-height: 420px;
+    display: flex; align-items: flex-end;
+    background-image: linear-gradient(135deg, #001830, #002147 60%, #003a6e);
+    position: relative; overflow: hidden;
+  }
+  .candidate-hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--off-white));
+  }
+  .candidate-hero-inner {
+    display: flex; gap: 48px; align-items: flex-end;
+    padding-bottom: 60px; z-index: 1;
+    position: relative;
+  }
+  .candidate-photo-wrap {
+    flex-shrink: 0; width: 220px; height: 280px;
+    background: linear-gradient(to top, var(--blue-mid), var(--blue-light));
+    border-radius: 8px 8px 0 0;
+    border: 3px solid rgba(255,255,255,0.12);
+    display: flex; align-items: flex-end; justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 -10px 60px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .candidate-photo-wrap .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+  .candidate-photo-wrap .photo-circle {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .candidate-photo-wrap .photo-body {
+    width: 120px; height: 120px;
+    border-radius: 60px 60px 0 0;
+    background: rgba(255,255,255,0.07);
+  }
+  .candidate-info h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: #fff; letter-spacing: 2px;
+    line-height: 1; margin-bottom: 8px;
+  }
+  .candidate-info .pos-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 3px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .candidate-info .tagline {
+    font-size: 18px; font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px; line-height: 1.6;
+  }
+
+  .candidate-body { background: var(--off-white); padding: 60px 0; }
+  .candidate-cols {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 48px;
+  }
+  .cand-section { margin-bottom: 40px; }
+  .cand-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 22px;
+    color: var(--blue); text-transform: uppercase;
+    letter-spacing: 1.5px; border-bottom: 3px solid var(--red);
+    padding-bottom: 10px; margin-bottom: 20px;
+    display: inline-block;
+  }
+  .cand-section p {
+    font-size: 16px; color: var(--text-mid); line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .priorities-list { list-style: none; }
+  .priorities-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 15px; color: var(--text-mid);
+    line-height: 1.6; padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .priorities-list li::before {
+    content: '→';
+    color: var(--red); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .sidebar-card {
+    background: var(--white);
+    border-radius: 8px; padding: 28px;
+    border-left: 4px solid var(--red);
+    margin-bottom: 24px;
+  }
+  .sidebar-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 16px;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--blue); margin-bottom: 14px;
+  }
+  .sidebar-card ul { list-style: none; }
+  .sidebar-card ul li {
+    font-size: 14px; color: var(--text-mid);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sidebar-card ul li::before {
+    content: '▸'; color: var(--red); font-size: 10px;
+  }
+  .vision-card {
+    background: var(--blue); border-radius: 8px;
+    padding: 28px;
+  }
+  .vision-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 16px;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--red); margin-bottom: 14px;
+  }
+  .vision-card p {
+    font-size: 15px; color: rgba(255,255,255,0.7);
+    line-height: 1.75; font-style: italic;
+  }
+
+  /* ── SENATORS ── */
+  .senators-header {
+    background: var(--blue);
+    padding: calc(var(--nav-h) + 60px) 0 60px;
+    text-align: center;
+    background-image: linear-gradient(135deg, #001830, #002147);
+  }
+  .senators-header p {
+    color: rgba(255,255,255,0.6); margin-top: 16px;
+    font-size: 17px;
+  }
+  .senators-body { background: var(--off-white); padding: 60px 0; }
+  .senators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .senator-card {
+    background: var(--white); border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-bottom: 3px solid transparent;
+  }
+  .senator-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,33,71,0.12);
+    border-bottom-color: var(--red);
+  }
+  .senator-photo {
+    height: 160px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .senator-photo-placeholder {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; color: rgba(255,255,255,0.4);
+  }
+  .senator-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--red); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px;
+  }
+  .senator-info { padding: 18px 20px; }
+  .senator-info h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px;
+    color: var(--blue); margin-bottom: 4px;
+  }
+  .senator-info .major {
+    font-size: 12px; color: var(--red);
+    font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .senator-info p {
+    font-size: 13px; color: var(--text-light); line-height: 1.6;
+  }
+
+  /* ── PLATFORM PAGE ── */
+  .platform-header {
+    background: var(--blue);
+    padding: calc(var(--nav-h) + 60px) 0 60px;
+    text-align: center;
+    background-image: linear-gradient(135deg, #001830, #002147);
+  }
+  .platform-header p {
+    color: rgba(255,255,255,0.6); margin-top: 16px; font-size: 17px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .platform-body { background: var(--off-white); padding: 60px 0; }
+  .platform-pillar {
+    background: var(--white); border-radius: 8px;
+    margin-bottom: 28px; overflow: hidden;
+    display: grid; grid-template-columns: 80px 1fr;
+  }
+  .pillar-accent {
+    background: var(--blue);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; padding: 28px 8px;
+  }
+  .pillar-accent .emoji { font-size: 26px; }
+  .pillar-accent .p-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; color: rgba(255,255,255,0.2);
+    line-height: 1;
+  }
+  .pillar-content { padding: 32px 36px; }
+  .pillar-content h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 26px;
+    color: var(--blue); text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pillar-content h3::after {
+    content: ''; flex: 1; height: 2px;
+    background: linear-gradient(to right, var(--red), transparent);
+    max-width: 120px;
+  }
+  .pillar-content p {
+    font-size: 15px; color: var(--text-mid); line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .pillar-bullets { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pillar-bullets li {
+    background: rgba(213,0,50,0.08);
+    color: var(--red); border: 1px solid rgba(213,0,50,0.2);
+    border-radius: 30px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 14px;
+  }
+
+  /* ── CONTACT PAGE ── */
+  .contact-header {
+    background: var(--blue);
+    padding: calc(var(--nav-h) + 60px) 0 60px;
+    text-align: center;
+    background-image: linear-gradient(135deg, #001830, #002147);
+  }
+  .contact-body { background: var(--off-white); padding: 60px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%; padding: 14px 16px;
+    border: 2px solid rgba(0,33,71,0.12);
+    border-radius: 6px; font-family: 'Barlow', sans-serif;
+    font-size: 15px; color: var(--text-dark);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--red); }
+  .form-group textarea { height: 130px; resize: vertical; }
+  .contact-side { padding: 0 16px; }
+  .contact-info-block { margin-bottom: 40px; }
+  .contact-info-block h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 20px;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--blue); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--red);
+  }
+  .contact-info-block p {
+    font-size: 15px; color: var(--text-mid); line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .social-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .social-link {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--white); border: 2px solid rgba(0,33,71,0.1);
+    border-radius: 6px; padding: 10px 16px;
+    text-decoration: none; transition: all 0.2s;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .social-link:hover { border-color: var(--red); color: var(--red); }
+  .join-cta {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+    border-radius: 12px; padding: 48px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .join-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(213,0,50,0.15) 0%, transparent 70%);
+  }
+  .join-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; color: #fff; letter-spacing: 3px;
+    margin-bottom: 12px; position: relative;
+  }
+  .join-cta h2 span { color: var(--red); }
+  .join-cta p {
+    color: rgba(255,255,255,0.65); font-size: 16px;
+    max-width: 420px; margin: 0 auto 28px; line-height: 1.7;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #001020; padding: 40px 0;
+    border-top: 3px solid var(--red);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-text {
+    font-size: 13px; color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); text-decoration: none;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .anim-fadeup {
+    animation: fadeUp 0.7s ease both;
+  }
+  .anim-delay-1 { animation-delay: 0.1s; }
+  .anim-delay-2 { animation-delay: 0.2s; }
+  .anim-delay-3 { animation-delay: 0.35s; }
+  .anim-delay-4 { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ticket-grid { grid-template-columns: 1fr 1fr; }
+    .platform-grid { grid-template-columns: 1fr 1fr; }
+    .candidate-cols { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .platform-pillar { grid-template-columns: 60px 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .ticket-grid { grid-template-columns: 1fr; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .stats-inner .stat-divider { display: none; }
+    .hero-badge { width: 260px; height: 260px; }
+    .badge-main { font-size: 68px; }
+    .candidate-hero-inner { flex-direction: column; gap: 24px; }
+    .candidate-photo-wrap { width: 140px; height: 180px; }
+    .pillar-content h3 { font-size: 20px; }
+  }
+
+  .scroll-reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1; transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigate('home')">SPARK <span>UIC</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="navigate('home')" data-page="home">Home</a></li>
+      <li><a onclick="navigate('president')" data-page="president">President</a></li>
+      <li><a onclick="navigate('vp')" data-page="vp">Vice President</a></li>
+      <li><a onclick="navigate('trustee')" data-page="trustee">Student Trustee</a></li>
+      <li><a onclick="navigate('senators')" data-page="senators">Senators & Reps</a></li>
+      <li><a onclick="navigate('platform')" data-page="platform">Platform</a></li>
+      <li><a onclick="navigate('contact')" data-page="contact" class="nav-cta">Get Involved</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navigate('home');closeMenu()">Home</a>
+  <a onclick="navigate('president');closeMenu()">President</a>
+  <a onclick="navigate('vp');closeMenu()">Vice President</a>
+  <a onclick="navigate('trustee');closeMenu()">Student Trustee</a>
+  <a onclick="navigate('senators');closeMenu()">Senators & Representatives</a>
+  <a onclick="navigate('platform');closeMenu()">Platform</a>
+  <a onclick="navigate('contact');closeMenu()">Get Involved / Contact</a>
+</div>
+
+<!-- ════════════════ HOME PAGE ════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow anim-fadeup">UIC Undergraduate Student Government · 2025 Election</div>
+          <h1 class="hero-title anim-fadeup anim-delay-1">
+            IT'S TIME<br/>TO <span>SPARK</span>
+          </h1>
+          <p class="hero-sub anim-fadeup anim-delay-2">
+            A bold new vision for UIC students. Fighting for real change in academics, mental health, campus safety, and a university that works for everyone.
+          </p>
+          <div class="hero-btns anim-fadeup anim-delay-3">
+            <button class="btn btn-red" onclick="navigate('contact')">Vote SPARK UIC</button>
+            <button class="btn btn-outline" onclick="navigate('platform')">Our Platform</button>
+          </div>
+        </div>
+        <div class="hero-visual anim-fadeup anim-delay-4">
+          <div class="hero-badge">
+            <div class="badge-text-top">USG Election</div>
+            <div class="badge-main">SPARK<span>.</span></div>
+            <div class="badge-sub">UIC 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">22K+</div>
+          <div class="stat-label">UIC Students</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Platform Pillars</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Candidates</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Mission: Students First</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="mission-section section-pad">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-text scroll-reveal">
+          <div class="tag">Our Mission</div>
+          <h2 class="section-title" style="margin-bottom:24px">Built for Every<br/><span class="red-accent">Flame</span> at UIC</h2>
+          <p>The SPARK ticket is a student-led movement powered by lived experience, real conversations, and an unshakable belief that UIC can — and must — do better for its students.</p>
+          <p>We are running to bring transparency to USG, amplify historically underrepresented voices, and build systems that support every student from day one on campus to graduation day.</p>
+          <p>No empty promises. No political games. Just students fighting for students.</p>
+          <div style="margin-top:28px;">
+            <button class="btn btn-outline-red" onclick="navigate('platform')">Read Our Platform →</button>
+          </div>
+        </div>
+        <div class="scroll-reveal" style="transition-delay:0.15s">
+          <div class="mission-callout">
+            <blockquote>
+              "When students <span>spark change together</span>, the entire university is lifted."
+            </blockquote>
+            <cite>— The SPARK UIC Ticket</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TICKET -->
+  <section class="ticket-section section-pad">
+    <div class="container">
+      <div class="tag">The Candidates</div>
+      <h2 class="section-title">Meet the Ticket</h2>
+      <div class="ticket-grid">
+        <div class="ticket-card scroll-reveal" onclick="navigate('president')">
+          <div class="ticket-card-img">
+            <div class="placeholder-silhouette"></div>
+            <div class="ticket-pos-tag">President</div>
+          </div>
+          <div class="ticket-card-body">
+            <h3>Alex Rivera</h3>
+            <p>Senior, Political Science. Three years of student advocacy, community organizing, and making UIC more equitable for every student.</p>
+            <button class="btn btn-outline-red" style="font-size:13px; padding:10px 20px;">View Profile →</button>
+          </div>
+        </div>
+
+        <div class="ticket-card scroll-reveal" style="transition-delay:0.1s" onclick="navigate('vp')">
+          <div class="ticket-card-img">
+            <div class="placeholder-silhouette"></div>
+            <div class="ticket-pos-tag">Vice President</div>
+          </div>
+          <div class="ticket-card-body">
+            <h3>Jordan Patel</h3>
+            <p>Junior, Business Administration. Student leader, campus organizer, and passionate advocate for academic support and mental health resources.</p>
+            <button class="btn btn-outline-red" style="font-size:13px; padding:10px 20px;">View Profile →</button>
+          </div>
+        </div>
+
+        <div class="ticket-card scroll-reveal" style="transition-delay:0.2s" onclick="navigate('trustee')">
+          <div class="ticket-card-img">
+            <div class="placeholder-silhouette"></div>
+            <div class="ticket-pos-tag">Student Trustee</div>
+          </div>
+          <div class="ticket-card-body">
+            <h3>Maya Thompson</h3>
+            <p>Senior, Engineering. Bridging the gap between students and university leadership with data-driven policy and a seat at the decision-making table.</p>
+            <button class="btn btn-outline-red" style="font-size:13px; padding:10px 20px;">View Profile →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM PREVIEW -->
+  <section class="platform-preview section-pad">
+    <div class="container">
+      <div class="tag" style="color:var(--red)">Our Vision</div>
+      <h2 class="section-title white" style="margin-bottom:12px">6 Pillars for Change</h2>
+      <p style="color:rgba(255,255,255,0.5); margin-bottom:0;">Real initiatives. Real accountability.</p>
+      <div class="platform-grid">
+        <div class="platform-item scroll-reveal">
+          <span class="platform-icon">🧠</span>
+          <h4>Mental Health</h4>
+          <p>Expand counseling capacity, reduce wait times, and destigmatize mental health support for every UIC student.</p>
+        </div>
+        <div class="platform-item scroll-reveal" style="transition-delay:.05s">
+          <span class="platform-icon">📚</span>
+          <h4>Academics</h4>
+          <p>Push for affordable textbooks, expanded tutoring, and better academic advising across all colleges.</p>
+        </div>
+        <div class="platform-item scroll-reveal" style="transition-delay:.1s">
+          <span class="platform-icon">🔒</span>
+          <h4>Campus Safety</h4>
+          <p>Real-time safety alerts, improved lighting, and community-based safety solutions that protect all students.</p>
+        </div>
+        <div class="platform-item scroll-reveal" style="transition-delay:.15s">
+          <span class="platform-icon">📢</span>
+          <h4>Transparency</h4>
+          <p>Open USG budgets, public meeting minutes, and a student accountability dashboard you can actually use.</p>
+        </div>
+        <div class="platform-item scroll-reveal" style="transition-delay:.2s">
+          <span class="platform-icon">🌎</span>
+          <h4>Student Life</h4>
+          <p>More cultural programming, diverse student spaces, and a campus that celebrates every identity and community.</p>
+        </div>
+        <div class="platform-item scroll-reveal" style="transition-delay:.25s">
+          <span class="platform-icon">💡</span>
+          <h4>Career & Housing</h4>
+          <p>Connecting students to internships, affordable housing resources, and emergency financial aid pathways.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <button class="btn btn-red" onclick="navigate('platform')">Full Platform Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="section-pad" style="background: var(--off-white)">
+    <div class="container">
+      <div class="join-cta scroll-reveal">
+        <h2>JOIN THE <span>SPARK</span></h2>
+        <p>Stand with us. Volunteer, spread the word, and make your voice heard on Election Day.</p>
+        <button class="btn btn-red" onclick="navigate('contact')">Get Involved Today</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home -->
+
+
+<!-- ════════════════ PRESIDENT PAGE ════════════════ -->
+<div class="page" id="page-president">
+  <div class="candidate-hero">
+    <div class="container">
+      <div class="candidate-hero-inner">
+        <div class="candidate-photo-wrap">
+          <div class="photo-placeholder">
+            <div class="photo-circle"></div>
+            <div class="photo-body"></div>
+          </div>
+        </div>
+        <div class="candidate-info">
+          <h1>Alex Rivera</h1>
+          <div class="pos-badge">🏛 USG President</div>
+          <p class="tagline">A proven leader. A relentless advocate.<br/>A president who actually shows up for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="candidate-body">
+    <div class="container">
+      <div class="candidate-cols">
+        <div>
+          <div class="cand-section scroll-reveal">
+            <h2>About Alex</h2>
+            <p>Alex Rivera is a fourth-year Political Science student from the South Side of Chicago, the first in their family to attend a four-year university. Alex has spent three years embedded in student advocacy — from organizing food pantry drives to lobbying administration for extended library hours — always asking the question: "Is this working for the students who need it most?"</p>
+            <p>As a former Senator in USG and two-term president of the Latin American Recruitment and Educational Services (LARES) student organization, Alex knows what it means to lead with accountability, build coalitions across communities, and follow through on commitments. That's the energy they're bringing to the highest office in undergraduate student government.</p>
+            <p>Alex is running because UIC students deserve a president who listens — and then actually does something about it.</p>
+          </div>
+
+          <div class="cand-section scroll-reveal">
+            <h2>What I Will Fight For</h2>
+            <ul class="priorities-list">
+              <li>Reduce counseling wait times by expanding ACCC staffing and peer support programs</li>
+              <li>Create a student emergency fund with a transparent, accessible application process</li>
+              <li>Mandate open USG budgets and make all meeting records publicly available online</li>
+              <li>Establish a formal student-chancellor dialogue series — every semester, on the record</li>
+              <li>Push for a UIC food security task force to permanently expand Flames Pantry capacity</li>
+              <li>Negotiate reduced or free access to course materials through OER and library partnerships</li>
+              <li>Advocate for LGBTQ+ and international student protections at the university policy level</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Experience</h3>
+            <ul>
+              <li>USG Senator — College of Liberal Arts & Sciences (2 years)</li>
+              <li>President, LARES Student Organization</li>
+              <li>UIC Dean's List (5 consecutive semesters)</li>
+              <li>UIC Community Engagement Fellowship</li>
+              <li>Chicago Housing Authority Youth Advisory Council</li>
+            </ul>
+          </div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Campus Involvement</h3>
+            <ul>
+              <li>Student Government Committee on Diversity</li>
+              <li>Urban Planning Club — Community Liaison</li>
+              <li>Volunteer, Flames Pantry</li>
+              <li>Peer Mentor, UIC First Gen Program</li>
+            </ul>
+          </div>
+          <div class="vision-card scroll-reveal">
+            <h3>Vision Statement</h3>
+            <p>"UIC is a school built on the promise of access — access to education, access to opportunity, access to a better future. My presidency will be defined by protecting that promise and expanding it to every corner of this campus."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ VP PAGE ════════════════ -->
+<div class="page" id="page-vp">
+  <div class="candidate-hero" style="background-image: linear-gradient(135deg, #001830, #002147 60%, #1a0010)">
+    <div class="container">
+      <div class="candidate-hero-inner">
+        <div class="candidate-photo-wrap" style="background: linear-gradient(to top, #3a0018, #002147)">
+          <div class="photo-placeholder">
+            <div class="photo-circle"></div>
+            <div class="photo-body"></div>
+          </div>
+        </div>
+        <div class="candidate-info">
+          <h1>Jordan Patel</h1>
+          <div class="pos-badge">⚡ Vice President</div>
+          <p class="tagline">Connecting students to resources.<br/>Building systems that never let you fall through the cracks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="candidate-body">
+    <div class="container">
+      <div class="candidate-cols">
+        <div>
+          <div class="cand-section scroll-reveal">
+            <h2>About Jordan</h2>
+            <p>Jordan Patel is a third-year Business Administration student specializing in Operations and a fierce champion for student wellness. Having navigated their own challenges with academic burnout and limited mental health support during their first year at UIC, Jordan turned personal experience into purpose — helping redesign the orientation experience for incoming students and building a peer-to-peer wellness network that now serves over 400 Flames.</p>
+            <p>As a Business Honors student and current USG Internal Affairs Committee Chair, Jordan understands how student government actually works — and more importantly, where it falls short. Their VP candidacy is built on operational excellence: making sure USG's internal systems, communication, and responsiveness meet the standard students deserve.</p>
+            <p>If Alex is the voice, Jordan is the engine. Together, they deliver.</p>
+          </div>
+
+          <div class="cand-section scroll-reveal">
+            <h2>Key Priorities</h2>
+            <ul class="priorities-list">
+              <li>Launch a "Student Wellness Dashboard" — a one-stop digital hub for mental health, tutoring, and financial resources</li>
+              <li>Implement mandatory mental health training for all USG representatives and student leaders</li>
+              <li>Create a Textbook Equity Initiative to eliminate cost barriers to required course materials</li>
+              <li>Restructure USG's internal communication so students can actually track what their reps are doing</li>
+              <li>Establish a Transfer & Commuter Student Advisory Board to center often-overlooked student voices</li>
+              <li>Partner with UIC Career Services to create a first-gen and low-income student career pipeline</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Experience</h3>
+            <ul>
+              <li>USG Internal Affairs Committee Chair</li>
+              <li>Business Honors Program</li>
+              <li>Founder, UIC Peer Wellness Network</li>
+              <li>UIC New Student Orientation Leader (2 years)</li>
+              <li>Illinois Student Government Leadership Summit Delegate</li>
+            </ul>
+          </div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Campus Involvement</h3>
+            <ul>
+              <li>South Asian Student Alliance</li>
+              <li>Business Consulting Club</li>
+              <li>Campus Recreation Student Advisory Board</li>
+              <li>UIC Mentorship & Buddy Program</li>
+            </ul>
+          </div>
+          <div class="vision-card scroll-reveal">
+            <h3>Vision Statement</h3>
+            <p>"The Vice President's office should be a resource engine, not a resume line. I will spend every day of this term making USG more responsive, more organized, and more student-centered than it has ever been."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ TRUSTEE PAGE ════════════════ -->
+<div class="page" id="page-trustee">
+  <div class="candidate-hero" style="background-image: linear-gradient(135deg, #001830, #001d35 60%, #002a20)">
+    <div class="container">
+      <div class="candidate-hero-inner">
+        <div class="candidate-photo-wrap" style="background: linear-gradient(to top, #001a14, #002147)">
+          <div class="photo-placeholder">
+            <div class="photo-circle"></div>
+            <div class="photo-body"></div>
+          </div>
+        </div>
+        <div class="candidate-info">
+          <h1>Maya Thompson</h1>
+          <div class="pos-badge">🎓 Student Trustee</div>
+          <p class="tagline">The student seat at the table.<br/>Using data, policy, and persistence to hold UIC accountable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="candidate-body">
+    <div class="container">
+      <div class="candidate-cols">
+        <div>
+          <div class="cand-section scroll-reveal">
+            <h2>About Maya</h2>
+            <p>Maya Thompson is a senior Civil Engineering student and the most technically prepared candidate for Student Trustee in recent UIC history. Growing up in North Lawndale, Maya was drawn to engineering as a way to build the world her community deserved — and that same systems-thinking drives her approach to university governance.</p>
+            <p>As a participant in UIC's Chancellor's Student Advisory Committee and a published undergraduate researcher in urban infrastructure equity, Maya knows how to translate student needs into language that administrators and Board of Trustees members cannot ignore. She has attended and presented at three Board of Trustees meetings already as an observer — she's ready to be a vote.</p>
+            <p>Maya is running to be a Student Trustee who treats the role like what it actually is: a legal fiduciary responsibility to 22,000 students.</p>
+          </div>
+
+          <div class="cand-section scroll-reveal">
+            <h2>What I Will Fight For</h2>
+            <ul class="priorities-list">
+              <li>Bring student input directly to every Board of Trustees vote on tuition, fees, and construction</li>
+              <li>Publish a monthly Student Trustee Report — public, plain-language updates on every major decision</li>
+              <li>Advocate for a permanent freeze on non-essential student fee increases</li>
+              <li>Push for sustainable campus infrastructure and a UIC climate action commitment with teeth</li>
+              <li>Ensure UIC's strategic plan includes explicit equity benchmarks tracked and reported publicly</li>
+              <li>Fight for expanded on-campus childcare access for student parents</li>
+              <li>Champion a comprehensive university-wide accessibility audit — every building, every system</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Experience</h3>
+            <ul>
+              <li>Chancellor's Student Advisory Committee</li>
+              <li>Undergraduate Research — Urban Infrastructure Equity</li>
+              <li>Engineering Student Council President</li>
+              <li>Society of Women Engineers, UIC Chapter Lead</li>
+              <li>ASCE National Student Conference Representative</li>
+            </ul>
+          </div>
+          <div class="sidebar-card scroll-reveal">
+            <h3>Campus Involvement</h3>
+            <ul>
+              <li>UIC Engineering Honors Program</li>
+              <li>Students for Environmental Sustainability</li>
+              <li>UIC Black Student Union</li>
+              <li>Women in STEM Mentorship Program</li>
+            </ul>
+          </div>
+          <div class="vision-card scroll-reveal">
+            <h3>Vision Statement</h3>
+            <p>"The Student Trustee role is not ceremonial. It is a responsibility. I will use every meeting, every vote, and every conversation with university leadership to make sure students — not politics — drive this university forward."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ SENATORS PAGE ════════════════ -->
+<div class="page" id="page-senators">
+  <div class="senators-header">
+    <div class="container">
+      <div class="tag" style="color:var(--red)">The Full Ticket</div>
+      <h1 class="section-title white">Senators &<br/><span class="red-accent">Representatives</span></h1>
+      <p>A diverse, dedicated team representing students across every college and community at UIC.</p>
+    </div>
+  </div>
+
+  <div class="senators-body">
+    <div class="container">
+      <div class="senators-grid">
+
+        <!-- Senator Cards -->
+        <div class="senator-card scroll-reveal">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Marcus Johnson</h4>
+            <div class="major">College of Business Administration</div>
+            <p>Advocating for career resources, internship equity, and academic support for first-generation business students.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.04s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Priya Nair</h4>
+            <div class="major">College of Liberal Arts & Sciences</div>
+            <p>Fighting for open-access course materials, extended library hours, and inclusive classroom policies across LAS.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.08s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Darius Williams</h4>
+            <div class="major">College of Engineering</div>
+            <p>Championing lab safety improvements, co-op program expansion, and accessibility in engineering facilities.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.12s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Sofia Mendez</h4>
+            <div class="major">College of Nursing</div>
+            <p>Pushing for better clinical placement support, student wellness in healthcare programs, and healthcare equity initiatives.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.16s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Representative</div>
+          </div>
+          <div class="senator-info">
+            <h4>Kevin Chen</h4>
+            <div class="major">College of Architecture, Design & the Arts</div>
+            <p>Advocating for increased studio space, student art funding, and more pathways to professional practice for CADA students.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.2s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Representative</div>
+          </div>
+          <div class="senator-info">
+            <h4>Aisha Brown</h4>
+            <div class="major">College of Urban Planning & Public Affairs</div>
+            <p>Centering community-engaged learning, affordable housing research, and equity in urban policy coursework.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.24s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Tyler Garcia</h4>
+            <div class="major">College of Education</div>
+            <p>Pushing for teacher candidate support, observation placement reform, and education student emergency aid access.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.28s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Representative</div>
+          </div>
+          <div class="senator-info">
+            <h4>Nadia Okonkwo</h4>
+            <div class="major">College of Public Health</div>
+            <p>Fighting for campus mental health data transparency, community health programming, and inclusive wellness initiatives.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.32s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Senator</div>
+          </div>
+          <div class="senator-info">
+            <h4>Rami Hassan</h4>
+            <div class="major">College of Pharmacy</div>
+            <p>Advocating for graduate student protections, better lab conditions, and improved stipends for health sciences researchers.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.36s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">At-Large</div>
+          </div>
+          <div class="senator-info">
+            <h4>Isabel Torres</h4>
+            <div class="major">At-Large Representative</div>
+            <p>Representing transfer students, commuters, and students from underrepresented backgrounds who need a louder voice in USG.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.4s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">At-Large</div>
+          </div>
+          <div class="senator-info">
+            <h4>James Park</h4>
+            <div class="major">At-Large Representative</div>
+            <p>Focused on international student support, English language resource access, and inclusive campus culture policies.</p>
+          </div>
+        </div>
+
+        <div class="senator-card scroll-reveal" style="transition-delay:.44s">
+          <div class="senator-photo">
+            <div class="senator-photo-placeholder">👤</div>
+            <div class="senator-badge">Representative</div>
+          </div>
+          <div class="senator-info">
+            <h4>Destiny Brooks</h4>
+            <div class="major">College of Applied Health Sciences</div>
+            <p>Championing disability services reform, accessible recreation facilities, and student athlete academic support.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PLATFORM PAGE ════════════════ -->
+<div class="page" id="page-platform">
+  <div class="platform-header">
+    <div class="container">
+      <div class="tag" style="color:var(--red)">Our Blueprint</div>
+      <h1 class="section-title white">The SPARK<br/><span class="red-accent">Platform</span></h1>
+      <p>Six pillars. Real commitments. Built by listening to UIC students — not talking at them.</p>
+    </div>
+  </div>
+
+  <div class="platform-body">
+    <div class="container" style="max-width:860px">
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent" style="background:#002147">
+          <span class="emoji">🧠</span>
+          <div class="p-num">01</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Mental Health & Wellness</h3>
+          <p>UIC students wait weeks — sometimes months — to see a counselor. That is not a resource gap, it is a crisis. The SPARK ticket will push the university to hire additional ACCC counselors, fund a 24/7 crisis text line staffed by trained professionals, and expand peer support programs with proper stipends and oversight.</p>
+          <p>We will also work to reduce the stigma around mental health by integrating wellness check-ins into the academic calendar and partnering with student organizations on de-stigmatization campaigns.</p>
+          <ul class="pillar-bullets">
+            <li>Expand ACCC Staffing</li>
+            <li>24/7 Crisis Line</li>
+            <li>Peer Wellness Network</li>
+            <li>Wellness Check-Ins</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent">
+          <span class="emoji">📚</span>
+          <div class="p-num">02</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Academic Equity & Resources</h3>
+          <p>No student should fail a class because they couldn't afford the textbook. SPARK will launch a Textbook Equity Initiative through expanded library reserves and OER (Open Educational Resource) adoption incentives. We will also push for longer library hours, expanded tutoring availability in underserved colleges, and more transparent academic advising outcomes.</p>
+          <p>We believe academic support shouldn't be a luxury — it should be a standard that every Flame can count on.</p>
+          <ul class="pillar-bullets">
+            <li>Textbook Equity Initiative</li>
+            <li>Expanded Tutoring</li>
+            <li>Advising Accountability</li>
+            <li>Extended Library Hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent" style="background:#1a0a00">
+          <span class="emoji">🔒</span>
+          <div class="p-num">03</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Campus Safety</h3>
+          <p>Safety is not a partisan issue — it is a baseline requirement. SPARK will advocate for improved lighting on campus pathways, a revamped emergency alert system with clearer, faster communication, and a community-based safety commission that includes student voices in every major safety decision.</p>
+          <p>We also support transparent reporting on campus safety incidents and the establishment of student safety liaisons in each college building.</p>
+          <ul class="pillar-bullets">
+            <li>Improved Lighting</li>
+            <li>Student Safety Liaison Program</li>
+            <li>Emergency Alert Overhaul</li>
+            <li>Safety Commission</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent" style="background:#001a2e">
+          <span class="emoji">📢</span>
+          <div class="p-num">04</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Transparency & Accountability</h3>
+          <p>Students have a right to know how their fees are spent. SPARK will mandate fully public USG budgets, open meeting minutes, and a live Student Action Tracker — a dashboard showing every active initiative, its timeline, its status, and who is responsible for it.</p>
+          <p>We will also establish a formal annual review process for all USG committees, with performance reports published and accessible to all students.</p>
+          <ul class="pillar-bullets">
+            <li>Open USG Budget</li>
+            <li>Student Action Tracker</li>
+            <li>Committee Reviews</li>
+            <li>Chancellor Dialogue Series</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent" style="background:#0d1f0d">
+          <span class="emoji">🌎</span>
+          <div class="p-num">05</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Student Life & Inclusion</h3>
+          <p>UIC is one of the most diverse universities in the nation — and our campus culture should reflect that strength, not suppress it. SPARK will push for increased funding for cultural student organizations, a dedicated multicultural events fund, and stronger protections for LGBTQ+, international, undocumented, and first-generation students.</p>
+          <p>We will also work to improve the physical spaces on campus, advocating for more student lounges, study spaces, and community rooms that belong to you.</p>
+          <ul class="pillar-bullets">
+            <li>Cultural Org Funding</li>
+            <li>LGBTQ+ Protections</li>
+            <li>International Student Support</li>
+            <li>Student Space Expansion</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-pillar scroll-reveal">
+        <div class="pillar-accent" style="background:#1a1000">
+          <span class="emoji">💡</span>
+          <div class="p-num">06</div>
+        </div>
+        <div class="pillar-content">
+          <h3>Career, Housing & Financial Aid</h3>
+          <p>We recognize that many UIC students are balancing coursework, jobs, family obligations, and financial stress simultaneously. SPARK will push for a Student Emergency Fund with a streamlined, non-stigmatizing application process, more affordable housing resources on and near campus, and a first-generation student career pipeline in partnership with top Chicago employers.</p>
+          <p>No student should have to choose between rent and a textbook. We will fight until that stops being a reality at UIC.</p>
+          <ul class="pillar-bullets">
+            <li>Student Emergency Fund</li>
+            <li>Housing Resource Hub</li>
+            <li>First-Gen Career Pipeline</li>
+            <li>Financial Aid Navigation Support</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ CONTACT PAGE ════════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-header">
+    <div class="container" style="text-align:center">
+      <div class="tag" style="color:var(--red)">Get Involved</div>
+      <h1 class="section-title white">Join the <span class="red-accent"<>SPARK</span></h1>
+    </div>
+  </div>
+
+  <div class="contact-body">
+    <div class="container">
+      <!-- BIG CTA -->
+      <div class="join-cta scroll-reveal" style="margin-bottom:60px">
+        <h2>READY TO <span>SPARK</span>?</h2>
+        <p>Whether you want to volunteer, spread the word, or simply vote — you are part of this movement. Every student counts.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative">
+          <a href="#" class="btn btn-red">Follow Us on Instagram</a>
+          <a href="#" class="btn btn-outline">Share with a Friend</a>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- FORM -->
+        <div class="scroll-reveal">
+          <div class="tag">Contact Us</div>
+          <h2 class="section-title" style="margin-bottom:28px; font-size:2rem">Send a Message</h2>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>UIC Email</label>
+            <input type="email" placeholder="netid@uic.edu" />
+          </div>
+          <div class="form-group">
+            <label>I want to...</label>
+            <select>
+              <option>Volunteer for the campaign</option>
+              <option>Ask a question</option>
+              <option>Share feedback or ideas</option>
+              <option>Request a meeting</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="What's on your mind? We actually read these."></textarea>
+          </div>
+          <button class="btn btn-red" style="width:100%">Send Message →</button>
+        </div>
+
+        <!-- SIDE INFO -->
+        <div class="contact-side scroll-reveal" style="transition-delay:0.15s">
+          <div class="contact-info-block">
+            <h3>Volunteer Sign-Up</h3>
+            <p>We need tabling volunteers, social media amplifiers, and on-the-ground advocates for Election Week. Sign up and we'll reach out with shifts and details.</p>
+            <div class="form-group" style="margin-top:16px">
+              <label>Your Email</label>
+              <input type="email" placeholder="netid@uic.edu" />
+            </div>
+            <button class="btn btn-outline-red" style="width:100%">Sign Me Up</button>
+          </div>
+
+          <div class="contact-info-block">
+            <h3>Follow & Share</h3>
+            <p>The biggest thing you can do right now is follow us and share our content with every UIC student you know. Election Day is coming fast.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">📸 @SparkUIC</a>
+              <a href="#" class="social-link">🔗 Link in Bio</a>
+              <a href="#" class="social-link">✉️ Email Us</a>
+            </div>
+          </div>
+
+          <div class="contact-info-block">
+            <h3>Connect in Person</h3>
+            <p>Find us tabling in the Student Center East, the SEL Atrium, and across campus during Election Week. Stop by — ask us anything.</p>
+            <div class="sidebar-card" style="border-left-color: var(--blue); margin-top:0">
+              <h3 style="color: var(--blue)">Election Week</h3>
+              <ul>
+                <li>Tabling — Student Center East</li>
+                <li>Campaign Social — TBA</li>
+                <li>Voting Opens — Online Portal</li>
+                <li>Results Night — Stay Tuned</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">SPARK <span>UIC</span></div>
+      <div class="footer-text">Paid for by SPARK UIC · UIC Undergraduate Student Government Election 2025<br/>University of Illinois Chicago · Chicago, IL</div>
+      <div class="footer-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('platform')">Platform</a>
+        <a onclick="navigate('contact')">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── ROUTING ───
+  const pages = {
+    home: 'page-home',
+    president: 'page-president',
+    vp: 'page-vp',
+    trustee: 'page-trustee',
+    senators: 'page-senators',
+    platform: 'page-platform',
+    contact: 'page-contact'
+  };
+
+  function navigate(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(pages[page]);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Update nav active state
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === page);
+    });
+    // Trigger scroll reveals for new page
+    setTimeout(initScrollReveal, 100);
+  }
+
+  // ─── HAMBURGER ───
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ─── SCROLL REVEAL ───
+  function initScrollReveal() {
+    const elements = document.querySelectorAll('.page.active .scroll-reveal:not(.visible)');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    elements.forEach(el => observer.observe(el));
+  }
+
+  // ─── FORM SUBMISSION ───
+  document.querySelectorAll('.btn-red').forEach(btn => {
+    if (btn.closest('form') || btn.textContent.includes('Send')) {
+      btn.addEventListener('click', function(e) {
+        if (this.textContent.includes('Send')) {
+          this.textContent = '✓ Message Sent!';
+          this.style.background = '#16a34a';
+          setTimeout(() => {
+            this.textContent = 'Send Message →';
+            this.style.background = '';
+          }, 3000);
+        }
+      });
+    }
+  });
+
+  // ─── INIT ───
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+  });
+
+  // Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').style.boxShadow =
+      window.scrollY > 10 ? '0 4px 30px rgba(0,0,0,0.5)' : '0 2px 20px rgba(0,0,0,0.4)';
+  });
+</script>
+</body>
+</html>
