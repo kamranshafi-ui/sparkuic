@@ -1026,7 +1026,9 @@
       <div class="join-cta scroll-reveal">
         <h2>JOIN THE <span>SPARK</span></h2>
         <p>Stand with us. Volunteer, spread the word, and make your voice heard on Election Day.</p>
-        <a class="btn btn-red" onclick="navigate('contact')" style="cursor:pointer;">Get Involved Today</a>
+        <div style="position:relative; z-index:10;">
+          <a class="btn btn-red" style="cursor:pointer;" onclick="event.stopPropagation(); navigate('contact');">Get Involved Today</a>
+        </div>
       </div>
     </div>
   </section>
