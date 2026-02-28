@@ -1599,6 +1599,13 @@
     document.getElementById('mainNav').style.boxShadow =
       window.scrollY > 10 ? '0 4px 30px rgba(0,0,0,0.5)' : '0 2px 20px rgba(0,0,0,0.4)';
   });
-</script>
+// ─── COPY LINK ───
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const confirm = document.getElementById('copy-confirm');
+      confirm.style.display = 'block';
+      setTimeout(() => { confirm.style.display = 'none'; }, 3000);
+    });
+  }</script>
 </body>
 </html>
