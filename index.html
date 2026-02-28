@@ -1459,89 +1459,52 @@
   <div class="contact-header">
     <div class="container" style="text-align:center">
       <div class="tag" style="color:var(--red)">Get Involved</div>
-      <h1 class="section-title white">Join the <span class="red-accent"<>SPARK</span></h1>
+      <h1 class="section-title white">Join the <span class="red-accent">SPARK</span></h1>
     </div>
   </div>
 
   <div class="contact-body">
     <div class="container">
+
       <!-- BIG CTA -->
       <div class="join-cta scroll-reveal" style="margin-bottom:60px">
         <h2>READY TO <span>SPARK</span>?</h2>
         <p>Whether you want to volunteer, spread the word, or simply vote — you are part of this movement. Every student counts.</p>
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative">
-          <a href="#" class="btn btn-red">Follow Us on Instagram</a>
-          <a href="#" class="btn btn-outline">Share with a Friend</a>
+          <a href="https://www.instagram.com/sparkuic" target="_blank" class="btn btn-red">Follow Us on Instagram</a>
+          <button class="btn btn-outline" onclick="copyLink()">Share with a Friend</button>
+        </div>
+        <div id="copy-confirm" style="display:none; margin-top:16px; color:#4ade80; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:18px; letter-spacing:2px;">
+          ✓ Link Copied to Clipboard!
         </div>
       </div>
 
-      <div class="contact-grid">
-        <!-- FORM -->
-        <div class="scroll-reveal">
-          <div class="tag">Contact Us</div>
-          <h2 class="section-title" style="margin-bottom:28px; font-size:2rem">Send a Message</h2>
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" placeholder="First and last name" />
-          </div>
-          <div class="form-group">
-            <label>UIC Email</label>
-            <input type="email" placeholder="netid@uic.edu" />
-          </div>
-          <div class="form-group">
-            <label>I want to...</label>
-            <select>
-              <option>Volunteer for the campaign</option>
-              <option>Ask a question</option>
-              <option>Share feedback or ideas</option>
-              <option>Request a meeting</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="What's on your mind? We actually read these."></textarea>
-          </div>
-          <button class="btn btn-red" style="width:100%">Send Message →</button>
+      <!-- VOTE CTA -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:48px;">
+        <div class="sidebar-card scroll-reveal" style="border-left-color:var(--red); text-align:center; padding:40px 28px;">
+          <div style="font-size:48px; margin-bottom:16px;">🗳️</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:28px; color:var(--blue); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Election Day</h3>
+          <p style="font-size:18px; color:var(--text-mid); line-height:1.7; margin-bottom:0;">Vote for SPARK UIC on<br/><strong style="color:var(--red); font-size:22px;">April 8th, 2026</strong></p>
         </div>
-
-        <!-- SIDE INFO -->
-        <div class="contact-side scroll-reveal" style="transition-delay:0.15s">
-          <div class="contact-info-block">
-            <h3>Volunteer Sign-Up</h3>
-            <p>We need tabling volunteers, social media amplifiers, and on-the-ground advocates for Election Week. Sign up and we'll reach out with shifts and details.</p>
-            <div class="form-group" style="margin-top:16px">
-              <label>Your Email</label>
-              <input type="email" placeholder="netid@uic.edu" />
-            </div>
-            <button class="btn btn-outline-red" style="width:100%">Sign Me Up</button>
-          </div>
-
-          <div class="contact-info-block">
-            <h3>Follow & Share</h3>
-            <p>The biggest thing you can do right now is follow us and share our content with every UIC student you know. Election Day is coming fast.</p>
-            <div class="social-links">
-              <a href="#" class="social-link">📸 @SparkUIC</a>
-              <a href="#" class="social-link">🔗 Link in Bio</a>
-              <a href="#" class="social-link">✉️ Email Us</a>
-            </div>
-          </div>
-
-          <div class="contact-info-block">
-            <h3>Connect in Person</h3>
-            <p>Find us tabling in the Student Center East, the SEL Atrium, and across campus during Election Week. Stop by — ask us anything.</p>
-            <div class="sidebar-card" style="border-left-color: var(--blue); margin-top:0">
-              <h3 style="color: var(--blue)">Election Week</h3>
-              <ul>
-                <li>Tabling — Student Center East</li>
-                <li>Campaign Social — TBA</li>
-                <li>Voting Opens — Online Portal</li>
-                <li>Results Night — Stay Tuned</li>
-              </ul>
-            </div>
-          </div>
+        <div class="sidebar-card scroll-reveal" style="border-left-color:var(--blue); text-align:center; padding:40px 28px;">
+          <div style="font-size:48px; margin-bottom:16px;">📸</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:28px; color:var(--blue); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Follow & Share</h3>
+          <p style="font-size:18px; color:var(--text-mid); line-height:1.7; margin-bottom:16px;">Stay updated on everything SPARK UIC.</p>
+          <a href="https://www.instagram.com/sparkuic" target="_blank" class="btn btn-outline-red" style="font-size:14px; padding:10px 20px;">@sparkuic →</a>
         </div>
       </div>
+
+      <!-- CONTACT -->
+      <div class="scroll-reveal" style="background:var(--blue); border-radius:12px; padding:48px; text-align:center; position:relative; overflow:hidden; margin-bottom:48px;">
+        <div style="position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(213,0,50,0.1) 0%, transparent 70%);"></div>
+        <h2 style="font-family:'Bebas Neue',sans-serif; font-size:42px; color:#fff; letter-spacing:3px; margin-bottom:12px; position:relative;">GET IN <span style="color:var(--red)">TOUCH</span></h2>
+        <p style="color:rgba(255,255,255,0.65); font-size:17px; max-width:500px; margin:0 auto 28px; line-height:1.7; position:relative;">Have a question, idea, or just want to connect? Reach out to us directly.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative;">
+          <a href="mailto:kshafi3@uic.edu" class="btn btn-red">✉ kshafi3@uic.edu</a>
+          <a href="mailto:vstan4@uic.edu" class="btn btn-outline">✉ vstan4@uic.edu</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
